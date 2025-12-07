@@ -3,8 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhimanyu Yadav - Developer Portfolio</title>
+    <meta name="description" content="Abhimanyu Yadav - Full-Stack Developer & AI/ML Engineer. Specializing in Node.js, Spring Boot, React, Machine Learning, and Media Processing. View my portfolio of projects including ML models and full-stack applications.">
+    <meta name="keywords" content="Abhimanyu Yadav, Full-Stack Developer, AI/ML Engineer, Machine Learning, Spring Boot, React, Node.js, FFmpeg, Portfolio, Northeastern University, Software Engineer">
+    <meta name="author" content="Abhimanyu Yadav">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Abhimanyu Yadav - Developer Portfolio">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%236B7C59'/><text x='50' y='65' font-size='45' text-anchor='middle' fill='%23F5F1E8' font-family='Arial, sans-serif' font-weight='bold'>AY</text></svg>">
+    <meta property="og:description" content="Full-Stack Developer & AI/ML Engineer specializing in scalable applications and machine learning systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abhimanyu-yadav.github.io">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Abhimanyu Yadav - Developer Portfolio">
+    <meta name="twitter:description" content="Full-Stack Developer & AI/ML Engineer. Check out my projects and experience.">
+    
+    <title>Abhimanyu Yadav - AI/ML Engineer Portfolio</title>
     <style>
+        :root {
+            --olive: #8B9D7A;
+            --dark-olive: #6B7C59;
+            --light-olive: #A8B896;
+            --brown: #A67C52;
+            --dark-brown: #8B6F47;
+            --light-brown: #C9A87C;
+            --cream: #F5F1E8;
+            --tan: #D4A574;
+            --burnt-orange: #E89968;
+            --beige: #C8B99A;
+            --dark-bg: #1A1A1A;
+            --darker-bg: #151515;
+            --card-bg: #242424;
+            --text-light: #E8E8E8;
+            --text-gray: #B8B8B8;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,8 +48,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #0f172a;
+            color: var(--text-light);
+            background: var(--dark-bg);
             overflow-x: hidden;
         }
 
@@ -31,21 +65,21 @@
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, var(--olive), var(--burnt-orange));
             z-index: 1000;
             transition: width 0.1s;
         }
 
         /* Navigation */
         nav {
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(36, 36, 36, 0.98);
             backdrop-filter: blur(10px);
             padding: 1.5rem 0;
             position: sticky;
             top: 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             z-index: 100;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            border-bottom: 2px solid rgba(139, 157, 122, 0.3);
         }
 
         nav .container {
@@ -57,10 +91,43 @@
         nav .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--olive), var(--brown));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--olive);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--olive);
         }
 
         /* Profile Photo Styles */
@@ -70,7 +137,7 @@
             height: 100%;
             border-radius: 20px;
             overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--dark-olive) 0%, var(--dark-brown) 100%);
         }
 
         .profile-photo {
@@ -86,40 +153,7 @@
             align-items: center;
             justify-content: center;
             font-size: 6rem;
-            color: white;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #e2e8f0;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        nav a:hover {
-            color: #667eea;
+            color: var(--cream);
         }
 
         /* Particle Background */
@@ -135,8 +169,8 @@
         /* Hero Section */
         .hero {
             position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--dark-olive) 0%, var(--dark-brown) 100%);
+            color: var(--cream);
             padding: 10rem 0 8rem;
             text-align: center;
             overflow: hidden;
@@ -149,7 +183,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,133.3C672,139,768,181,864,181.3C960,181,1056,139,1152,128C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(245,241,232,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,133.3C672,139,768,181,864,181.3C960,181,1056,139,1152,128C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
             background-size: cover;
             opacity: 0.3;
         }
@@ -178,7 +212,7 @@
             display: inline-block;
             width: 3px;
             height: 1.5rem;
-            background: white;
+            background: var(--cream);
             margin-left: 5px;
             animation: blink 0.7s infinite;
         }
@@ -209,7 +243,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(255,255,255,0.2);
+            background: rgba(245, 241, 232, 0.2);
             transition: left 0.5s;
         }
 
@@ -218,25 +252,27 @@
         }
 
         .btn-primary {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: var(--cream);
+            color: #2C2C2C;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
         }
 
         .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 2px solid white;
+            background: rgba(245, 241, 232, 0.15);
+            color: var(--cream);
+            border: 2px solid var(--cream);
             backdrop-filter: blur(10px);
+            font-weight: 600;
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(245, 241, 232, 0.25);
             transform: translateY(-3px);
         }
 
@@ -251,7 +287,7 @@
         .scroll-indicator svg {
             width: 30px;
             height: 30px;
-            fill: white;
+            fill: var(--cream);
         }
 
         /* Section Styles */
@@ -259,18 +295,18 @@
             padding: 5rem 0;
             position: relative;
             z-index: 1;
-            background: #0f172a;
+            background: var(--dark-bg);
         }
 
         section:nth-child(even) {
-            background: #1e293b;
+            background: var(--darker-bg);
         }
 
         .section-title {
             font-size: 3rem;
             margin-bottom: 3rem;
             text-align: center;
-            color: #e2e8f0;
+            color: var(--text-light);
             position: relative;
             display: inline-block;
             left: 50%;
@@ -285,7 +321,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, var(--olive), var(--burnt-orange));
             border-radius: 2px;
         }
 
@@ -310,26 +346,24 @@
 
         .about-text p {
             margin-bottom: 1.5rem;
-            color: #cbd5e1;
+            color: var(--text-gray);
             font-size: 1.1rem;
             line-height: 1.8;
         }
 
         .about-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--dark-olive) 0%, var(--dark-brown) 100%);
             height: 400px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 6rem;
             position: relative;
             overflow: hidden;
             opacity: 0;
             transform: translateX(50px);
             transition: all 0.8s;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .about-image.visible {
@@ -342,7 +376,7 @@
             position: absolute;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(245, 241, 232, 0.1), transparent);
             top: -50%;
             left: -50%;
             animation: shimmer 3s infinite;
@@ -368,12 +402,12 @@
         }
 
         .skill-card {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.4s;
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            border: 2px solid rgba(139, 157, 122, 0.2);
             opacity: 0;
             transform: translateY(30px);
         }
@@ -385,12 +419,12 @@
 
         .skill-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
-            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 50px rgba(139, 157, 122, 0.2);
+            border-color: var(--olive);
         }
 
         .skill-card h3 {
-            color: #667eea;
+            color: var(--olive);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
             position: relative;
@@ -404,7 +438,7 @@
             left: 0;
             width: 50px;
             height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, var(--olive), var(--burnt-orange));
         }
 
         .skill-tags {
@@ -414,19 +448,21 @@
         }
 
         .skill-tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: #a5b4fc;
+            background: rgba(139, 157, 122, 0.15);
+            color: var(--tan);
             padding: 0.6rem 1rem;
             border-radius: 25px;
             font-size: 0.9rem;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            border: 1.5px solid rgba(139, 157, 122, 0.3);
             transition: all 0.3s;
+            font-weight: 500;
         }
 
         .skill-tag:hover {
-            background: rgba(102, 126, 234, 0.3);
+            background: rgba(139, 157, 122, 0.25);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 15px rgba(139, 157, 122, 0.3);
+            border-color: var(--olive);
         }
 
         /* Experience Section */
@@ -443,17 +479,17 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(180deg, #667eea, #764ba2);
+            background: linear-gradient(180deg, var(--olive), var(--brown));
         }
 
         .experience-item {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 16px;
             margin-bottom: 2.5rem;
             margin-left: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border: 1px solid rgba(102, 126, 234, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(139, 157, 122, 0.2);
             position: relative;
             opacity: 0;
             transform: translateX(30px);
@@ -473,15 +509,15 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #667eea;
-            border: 4px solid #0f172a;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+            background: var(--olive);
+            border: 4px solid var(--dark-bg);
+            box-shadow: 0 0 20px rgba(139, 157, 122, 0.6);
         }
 
         .experience-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
-            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 50px rgba(139, 157, 122, 0.2);
+            border-color: var(--olive);
         }
 
         .experience-header {
@@ -494,29 +530,30 @@
         }
 
         .experience-header h3 {
-            color: #e2e8f0;
+            color: var(--text-light);
             font-size: 1.5rem;
             margin: 0;
         }
 
         .experience-date {
-            color: #667eea;
+            color: var(--olive);
             font-weight: 600;
             font-size: 1rem;
             padding: 0.3rem 1rem;
-            background: rgba(102, 126, 234, 0.2);
+            background: rgba(139, 157, 122, 0.15);
             border-radius: 20px;
+            border: 1.5px solid rgba(139, 157, 122, 0.3);
         }
 
         .experience-company {
-            color: #94a3b8;
+            color: var(--tan);
             font-weight: 600;
             margin-bottom: 1rem;
             font-size: 1.05rem;
         }
 
         .experience-description {
-            color: #cbd5e1;
+            color: var(--text-gray);
             line-height: 1.8;
         }
 
@@ -530,13 +567,13 @@
             content: '▹';
             position: absolute;
             left: -1.5rem;
-            color: #667eea;
+            color: var(--olive);
             font-weight: bold;
         }
 
         .experience-contact {
             margin-top: 1rem;
-            color: #94a3b8;
+            color: var(--tan);
             font-size: 0.9rem;
             font-style: italic;
         }
@@ -549,12 +586,12 @@
         }
 
         .project-card {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.4s;
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            border: 2px solid rgba(139, 157, 122, 0.2);
             opacity: 0;
             transform: scale(0.9);
         }
@@ -566,17 +603,17 @@
 
         .project-card:hover {
             transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(102, 126, 234, 0.4);
-            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 25px 60px rgba(139, 157, 122, 0.3);
+            border-color: var(--olive);
         }
 
         .project-image {
             height: 220px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--dark-olive) 0%, var(--dark-brown) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--cream);
             font-size: 4rem;
             position: relative;
             overflow: hidden;
@@ -589,7 +626,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(245, 241, 232, 0.15), transparent);
             transform: rotate(45deg);
             transition: all 0.6s;
         }
@@ -604,12 +641,12 @@
 
         .project-content h3 {
             margin-bottom: 0.8rem;
-            color: #e2e8f0;
+            color: var(--text-light);
             font-size: 1.4rem;
         }
 
         .project-content p {
-            color: #cbd5e1;
+            color: var(--text-gray);
             margin-bottom: 1.5rem;
             line-height: 1.7;
         }
@@ -622,12 +659,13 @@
         }
 
         .tech-badge {
-            background: rgba(102, 126, 234, 0.15);
-            color: #a5b4fc;
+            background: rgba(139, 157, 122, 0.15);
+            color: var(--tan);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.85rem;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            border: 1.5px solid rgba(139, 157, 122, 0.3);
+            font-weight: 500;
         }
 
         .project-links {
@@ -636,7 +674,7 @@
         }
 
         .project-links a {
-            color: #667eea;
+            color: var(--olive);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
@@ -651,12 +689,17 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #667eea;
+            background: var(--olive);
             transition: width 0.3s;
+        }
+
+        .project-links a:hover {
+            color: var(--tan);
         }
 
         .project-links a:hover::after {
             width: 100%;
+            background: var(--tan);
         }
 
         /* Contact Section */
@@ -668,7 +711,7 @@
 
         .contact-content p {
             font-size: 1.3rem;
-            color: #cbd5e1;
+            color: var(--text-gray);
             margin-bottom: 3rem;
             line-height: 1.8;
         }
@@ -684,31 +727,32 @@
             display: flex;
             align-items: center;
             gap: 0.7rem;
-            color: #e2e8f0;
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 600;
             font-size: 1.2rem;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: var(--card-bg);
             border-radius: 50px;
             transition: all 0.3s;
-            border: 2px solid rgba(102, 126, 234, 0.3);
+            border: 2px solid rgba(139, 157, 122, 0.3);
         }
 
         .contact-link:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-            border-color: #667eea;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 15px 40px rgba(139, 157, 122, 0.3);
+            border-color: var(--olive);
+            background: linear-gradient(135deg, var(--dark-olive) 0%, var(--dark-brown) 100%);
+            color: var(--cream);
         }
 
         /* Footer */
         footer {
-            background: #020617;
-            color: #94a3b8;
+            background: var(--darker-bg);
+            color: var(--text-gray);
             text-align: center;
             padding: 2.5rem 0;
-            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            border-top: 2px solid rgba(139, 157, 122, 0.2);
         }
 
         /* Animations */
@@ -743,11 +787,6 @@
         @keyframes shimmer {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
         }
 
         /* Responsive */
@@ -841,14 +880,15 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm Abhimanyu Yadav, a Backend Developer currently pursuing my MS in Artificial Intelligence at Northeastern University. I specialize in building scalable media delivery platforms, full-stack applications, and machine learning systems that solve real-world problems.</p>
+                    <p>I'm Abhimanyu Yadav, a Full-Stack Developer with expertise in AI/ML, currently pursuing my MS in Artificial Intelligence at Northeastern University. I specialize in building scalable media delivery platforms, full-stack applications, and machine learning systems that solve real-world problems.</p>
                     <p>Previously, I worked as a Backend Developer at FRONT.SPACE - Urbanite Solutions in Bangalore (Nov 2022 - Feb 2024), where I spearheaded backend development for media transformation platforms using FFmpeg, Sharp, and Node.js. I also completed a DSA internship, strengthening my algorithmic problem-solving skills.</p>
                     <p>I'm passionate about combining my backend expertise with AI/ML to create innovative, efficient solutions. I thrive in collaborative environments and excel at meeting tight deadlines while maintaining high code quality. My diverse skill set spans from Java/Spring Boot to Python ML, enabling me to tackle complex technical challenges across the stack.</p>
                 </div>
                 <div class="about-image">
                     <div class="profile-photo-container">
                         <img src="WhatsApp Image 2025-10-16 at 12.45.11_25f2c790.jpg" alt="Abhimanyu Yadav" class="profile-photo">
-                        <div class="profile-photo-placeholder">👨‍💻</div>
+                        <!-- Fallback placeholder - remove this line if photo loads correctly -->
+                        <!-- <div class="profile-photo-placeholder">👨‍💻</div> -->
                     </div>
                 </div>
             </div>
@@ -942,13 +982,14 @@
                 </div>
                 <div class="experience-item">
                     <div class="experience-header">
-                        <h3>Backend Developer</h3>
+                        <h3>Full-Stack Developer</h3>
                         <span class="experience-date">Nov 2022 - Feb 2024</span>
                     </div>
                     <p class="experience-company">FRONT.SPACE - Urbanite Solutions Private Limited, Bangalore</p>
                     <ul class="experience-description">
                         <li>Spearheaded backend development for media delivery platforms, enhancing video and image transformation capabilities using FFmpeg, Sharp, and Node.js</li>
                         <li>Implemented and optimized backend processes, improving system performance and operational efficiency</li>
+                        <li>Developed responsive React frontend components for seamless integration between frontend and backend systems</li>
                         <li>Fostered team collaboration through effective communication of technical solutions</li>
                         <li>Consistently met tight deadlines while maintaining high performance under pressure</li>
                     </ul>
@@ -991,11 +1032,12 @@
                     <div class="project-image">🎬</div>
                     <div class="project-content">
                         <h3>Media Delivery Platform</h3>
-                        <p>Built a scalable backend for video and image transformation using FFmpeg and Sharp. Optimized processing pipelines for faster delivery and reduced server load.</p>
+                        <p>Built a scalable backend for video and image transformation using FFmpeg and Sharp. Optimized processing pipelines for faster delivery and reduced server load. Integrated React frontend for real-time media management.</p>
                         <div class="project-tech-stack">
                             <span class="tech-badge">Node.js</span>
                             <span class="tech-badge">FFmpeg</span>
                             <span class="tech-badge">Sharp</span>
+                            <span class="tech-badge">React</span>
                             <span class="tech-badge">AWS</span>
                         </div>
                         <div class="project-links">
@@ -1049,10 +1091,9 @@
             <div class="contact-content">
                 <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
                 <div class="contact-links">
-                    <a href="mailto:your.email@example.com" class="contact-link">📧 Email</a>
-                    <a href="https://github.com/yourusername" class="contact-link">💻 GitHub</a>
-                    <a href="https://linkedin.com/in/yourusername" class="contact-link">💼 LinkedIn</a>
-                    <a href="https://twitter.com/yourusername" class="contact-link">🐦 Twitter</a>
+                    <a href="mailto:ydabhimanyu279@gmail.com" class="contact-link"><i class="fa-solid fa-envelope"></i> Email</a>
+                    <a href="https://github.com/ydabhimanyu279" class="contact-link"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://linkedin.com/in/ydabhimanyu" class="contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -1068,8 +1109,8 @@
     <script>
         // Typing Animation
         const phrases = [
-            'Backend Developer',
-            'AI Graduate Student',
+            'AI/ML Engineer',
+            'Full-Stack Developer',
             'Media Tech Specialist',
             'Problem Solver'
         ];
@@ -1139,7 +1180,7 @@
             }
 
             draw() {
-                ctx.fillStyle = 'rgba(102, 126, 234, 0.5)';
+                ctx.fillStyle = 'rgba(139, 157, 122, 0.4)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -1166,7 +1207,7 @@
                     
                     if (distance < 100) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(102, 126, 234, ${0.2 - distance/500})`;
+                        ctx.strokeStyle = `rgba(139, 157, 122, ${0.2 - distance/500})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
                         ctx.lineTo(particlesArray[j].x, particlesArray[j].y);

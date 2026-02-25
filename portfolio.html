@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Abhimanyu Yadav | MS in AI Student</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23059669%22/><text y=%22.9em%22 x=%2250%25%22 font-size=%2260%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-weight=%22bold%22 fill=%22white%22>AY</text></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f8fafc;--bg2:#f1f5f9;--bg3:#ffffff;
+  --cyan:#059669;--cyan-dim:#05966918;--cyan-dark:#065f46;
+  --text:#0f172a;--muted:#64748b;--border:#e2e8f0;
+  --green:#059669;--green-hover:#065f46;
+}
+body::before{display:none}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* GRID BG */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.3;pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:rgba(248,250,252,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999}
+.nav-inner{max-width:1200px;margin:auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-family:monospace;font-size:1.1rem;font-weight:700;color:var(--text)}
+.logo span{color:var(--cyan)}
+.nav-links{list-style:none;display:flex;gap:2rem}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.875rem;font-family:monospace;position:relative;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--cyan);transition:width .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;width:100%;background:var(--bg2);border-bottom:1px solid var(--border);z-index:998;padding:1rem 2rem;flex-direction:column;gap:1rem}
+.mobile-menu a{text-decoration:none;color:var(--text);font-family:monospace;padding:.5rem 0;border-bottom:1px solid var(--border)}
+.mobile-menu.open{display:flex}
+
+/* SECTIONS */
+section{padding:100px 2rem;position:relative;z-index:1}
+.wrap{max-width:1200px;margin:auto}
+.section-label{font-family:monospace;font-size:.85rem;color:var(--cyan);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+h2.sec-title{font-size:2.2rem;font-weight:800;color:var(--text);margin-bottom:.6rem}
+.sec-sub{color:var(--muted);font-size:.95rem;margin-bottom:3rem;max-width:600px}
+
+/* HERO & AI ANIMATION */
+#hero{min-height:100vh;display:flex;align-items:center;padding:0 2rem;position:relative;overflow:hidden;background:#f8fafc}
+.hero-bg-anim{position:absolute;inset:0;z-index:0;pointer-events:none}
+.ai-node{position:absolute;width:6px;height:6px;background:var(--cyan);border-radius:50%;opacity:0.4;filter:blur(1px);animation:pulseNode 4s infinite ease-in-out}
+.ai-line{position:absolute;height:1px;background:linear-gradient(90deg, transparent, var(--cyan), transparent);opacity:0.2;transform-origin:left center;animation:flowLine 8s infinite linear}
+
+@keyframes pulseNode { 0%, 100% { transform:scale(1); opacity:0.3; } 50% { transform:scale(2); opacity:0.6; } }
+@keyframes flowLine { 0% { opacity: 0; transform: scaleX(0); } 20% { opacity: 0.2; } 80% { opacity: 0.2; } 100% { opacity: 0; transform: scaleX(1.5); } }
+
+.hero-wrap{max-width:1200px;margin:auto;width:100%;position:relative;z-index:1}
+h1.hero-title{font-size:3.8rem;font-weight:900;line-height:1.1;margin-bottom:.5rem;color:var(--text)}
+h1.hero-title .dim{color:var(--muted);font-weight:300}
+.hero-cursor{display:inline-block;width:3px;height:.9em;background:var(--cyan);margin-left:4px;animation:blink 1s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-sub{color:var(--muted);font-size:1.1rem;max-width:650px;line-height:1.8;margin:1.5rem 0 2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-green{background:var(--green);color:#fff;padding:.8rem 1.8rem;border-radius:6px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.btn-green:hover{background:var(--green-hover);transform:translateY(-2px);box-shadow:0 10px 20px var(--cyan-dim)}
+.btn-ghost{background:transparent;color:var(--text);padding:.8rem 1.8rem;border-radius:6px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .2s;border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.hero-meta{font-family:monospace;font-size:.85rem;color:var(--muted)}
+.hero-meta span{margin-right:2rem}
+
+/* ABOUT */
+#about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:400px 1fr;gap:5rem;align-items:start}
+.about-photo-card{border-radius:12px;overflow:hidden;background:var(--bg3);border:1px solid var(--border);position:relative;box-shadow:0 4px 24px rgba(5,150,105,.1)}
+.photo-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.photo-overlay .name{font-size:1.1rem;font-weight:700;color:#fff}
+.photo-overlay .role{font-family:monospace;font-size:.8rem;color:var(--cyan);margin-top:2px}
+.about-photo-card img{width:100%;height:420px;object-fit:cover;display:block}
+.about-right h2{font-size:2rem;font-weight:800;line-height:1.3;margin-bottom:1.5rem}
+.about-right h2 span{color:var(--cyan)}
+.about-blockquote{border-left:3px solid var(--cyan);padding-left:1.25rem;margin-bottom:1.5rem}
+.about-blockquote p{color:var(--text);line-height:1.85;font-size:1.05rem}
+.about-quote{font-style:italic;color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:1.75rem}
+.interests-label{font-size:.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.interests-list{display:flex;flex-wrap:wrap;gap:.75rem}
+.interest-dot{display:flex;align-items:center;gap:.4rem;font-size:.875rem;color:var(--muted)}
+.interest-dot::before{content:'';width:6px;height:6px;background:var(--cyan);border-radius:50%;flex-shrink:0}
+.about-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1.75rem}
+.info-item{display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--muted)}
+.info-item i{color:var(--cyan);width:16px;font-size:.8rem}
+
+/* STACK */
+#stack{background:var(--bg2)}
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.stack-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all .25s}
+.stack-card:hover{border-color:var(--cyan);box-shadow:0 0 20px var(--cyan-dim)}
+.stack-card h4{font-family:monospace;font-size:.78rem;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:.9rem}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.tag{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.75rem;color:var(--muted);transition:all .2s}
+.stack-card:hover .tag{border-color:#21262d;color:var(--text)}
+
+/* EXPERIENCE */
+#experience{background:var(--bg)}
+.exp-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:all .25s}
+.exp-card:hover{border-color:var(--cyan);box-shadow:0 0 24px var(--cyan-dim)}
+.exp-top{display:flex;align-items:flex-start;gap:1.25rem}
+.exp-icon{width:46px;height:46px;background:var(--cyan-dim);border:1px solid var(--cyan);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:1.1rem;flex-shrink:0}
+.exp-role{font-size:1.05rem;font-weight:700}
+.exp-company{font-family:monospace;font-size:.82rem;color:var(--cyan);margin:.2rem 0}
+.exp-period{font-size:.75rem;color:var(--muted)}
+.exp-bullets{margin-top:1rem;list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.exp-bullets li{font-size:.875rem;color:var(--muted);padding-left:1.25rem;position:relative;line-height:1.6}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:.7rem;top:.1em}
+
+/* PROJECTS */
+#projects{background:var(--bg2)}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:all .25s}
+.proj-card:hover{border-color:var(--cyan);box-shadow:0 0 28px var(--cyan-dim);transform:translateY(-3px)}
+.proj-card.featured{grid-column:span 2}
+.proj-preview{position:relative;height:240px;background:#0d1117;overflow:hidden;}
+.proj-preview img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease; opacity: 0.8;}
+.proj-card:hover .proj-preview img{transform:scale(1.05); opacity: 0.6;}
+.proj-preview-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.25rem;background:linear-gradient(transparent,rgba(13,17,23,0.95) 80%)}
+.proj-name{font-size:1.1rem;font-weight:700;color:#fff}
+.proj-type{font-family:monospace;font-size:.8rem;color:var(--cyan);margin-top:4px}
+.proj-body{padding:1.25rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:.9rem}
+.proj-desc{font-size:.875rem;color:var(--muted);line-height:1.65}
+.proj-desc strong{color:var(--text)}
+.proj-bullets{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.proj-bullets li{font-size:.8rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem}
+.proj-bullets li::before{content:'•';color:var(--cyan);flex-shrink:0}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.proj-tag{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:.72rem;color:var(--muted)}
+.proj-card:hover .proj-tag{color:var(--text); border-color:var(--border)}
+.proj-footer{display:flex;align-items:center;gap:.9rem;padding-top:.5rem}
+.proj-link{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;border:1px solid var(--border);color:var(--muted);text-decoration:none;transition:all .2s;font-size:.9rem}
+.proj-link:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim)}
+.proj-stat-badge{margin-left:auto;font-family:monospace;font-size:.72rem;color:var(--cyan);border:1px solid var(--cyan);padding:2px 8px;border-radius:4px}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-left h2{font-size:2.2rem;font-weight:800;margin-bottom:.75rem}
+.contact-left p{color:var(--muted);line-height:1.75;margin-bottom:2rem;font-size:.95rem}
+.social-cards{display:flex;flex-direction:column;gap:.75rem}
+.social-card{display:flex;align-items:center;gap:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;text-decoration:none;color:var(--text);transition:all .2s;position:relative}
+.social-card:hover{border-color:var(--cyan);box-shadow:0 0 16px var(--cyan-dim)}
+.social-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.social-icon.gh{background:#21262d;color:#fff}
+.social-icon.li{background:#0a66c2;color:#fff}
+.social-icon.em{background:#333;color:#fff}
+.social-icon.ph{background:#1a5c3a;color:#fff}
+.social-label{font-weight:600;font-size:.9rem}
+.social-sub{font-size:.75rem;color:var(--muted)}
+.social-arrow{margin-left:auto;color:var(--muted);font-size:.75rem}
+.contact-form{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:2rem}
+.contact-form h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem}
+.form-group{margin-bottom:1rem}
+.form-group input,.form-group textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;color:var(--text);font-size:.875rem;font-family:inherit;outline:none;transition:border-color .2s;resize:none}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--cyan)}
+.form-group textarea{height:130px}
+.btn-send{width:100%;background:var(--green);color:#fff;border:none;padding:.85rem;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.btn-send:hover{background:var(--green-hover)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;position:relative;z-index:1}
+footer p{font-family:monospace;font-size:.8rem;color:var(--muted)}
+footer a{color:var(--cyan);text-decoration:none}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .55s,transform .55s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .proj-card.featured{grid-column:span 1}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  h1.hero-title{font-size:2.4rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:80px 1.25rem}
+  h2.sec-title{font-size:1.7rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="logo"><span>&lt;/</span>abhimanyu<span>&gt;</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">/about</a></li>
+      <li><a href="#stack">/stack</a></li>
+      <li><a href="#projects">/projects</a></li>
+      <li><a href="#contact">/contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">/about</a>
+  <a href="#stack" onclick="this.closest('.mobile-menu').classList.remove('open')">/stack</a>
+  <a href="#projects" onclick="this.closest('.mobile-menu').classList.remove('open')">/projects</a>
+  <a href="#contact" onclick="this.closest('.mobile-menu').classList.remove('open')">/contact</a>
+</div>
+
+<section id="hero">
+  <div class="hero-bg-anim" id="hero-bg"></div>
+
+  <div class="hero-wrap">
+    <h1 class="hero-title">Graduate Student<br/><span class="dim">Building Agentic AI & Geo-Intelligence.</span><span class="hero-cursor"></span></h1>
+    <p class="hero-sub">MS AI at Northeastern University (4.0 GPA). I bridge the gap between machine learning research and scalable software, turning "trending tech" into production-ready systems.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-green">Explore My Work →</a>
+      <a href="#contact" class="btn-ghost">Let's Connect</a>
+    </div>
+    <div class="hero-meta">
+      <span>// builder</span>
+      <span>// ai architect</span>
+      <span>// 4.0 gpa</span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">/about</div>
+    <div class="about-grid">
+      <div class="about-photo-card fade-in">
+        <img src="profile picture.jpg" alt="Abhimanyu Yadav"/>
+        <div class="photo-overlay">
+          <div class="name">Abhimanyu Yadav</div>
+          <div class="role">MS Artificial Intelligence</div>
+        </div>
+      </div>
+      <div class="about-right fade-in">
+        <h2>Building Smart Tools <span>to Solve Real Problems</span></h2>
+        <div class="about-blockquote">
+          <p>MS in Artificial Intelligence (4.0 GPA) with a foundation in Full-Stack Engineering. I specialize in bridging the gap between advanced machine learning research and scalable production systems. I am driven by the challenge of architecting high-stakes solutions where academic rigor meets industrial-grade reliability—transforming emerging frontiers of AI into robust, real-world value.</p>
+        </div>
+        <p class="about-quote">"I don't just build models; I build systems. My goal is to take the latest frontiers of AI—from RAG to Geospatial Vision—and ship them into the hands of users."</p>
+        <div class="interests-label">Focus Areas</div>
+        <div class="interests-list">
+          <span class="interest-dot">Agentic AI Workflows</span>
+          <span class="interest-dot">Geospatial Deep Learning</span>
+          <span class="interest-dot">Large Language Models (RAG)</span>
+          <span class="interest-dot">Production-Scale Engineering</span>
+          <span class="interest-dot">Computer Vision</span>
+        </div>
+        <div class="about-info-grid">
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i>Portland, Maine</div>
+          <div class="info-item"><i class="fas fa-envelope"></i>yadav.abhim@northeastern.edu</div>
+          <div class="info-item"><i class="fas fa-phone-alt"></i>(909) 512-2607</div>
+          <div class="info-item"><i class="fab fa-github"></i>github.com/ydabhimanyu279</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="section-label">/stack</div>
+    <h2 class="sec-title">Technical Stack</h2>
+    <p class="sec-sub">Technologies and tools I work with across AI, full-stack development, and cloud infrastructure.</p>
+    <div class="stack-grid">
+      <div class="stack-card fade-in">
+        <h4>AI / ML / NLP</h4>
+        <div class="tags">
+          <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Keras</span>
+          <span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">LangChain</span>
+          <span class="tag">RAG</span><span class="tag">LLM Tool Calling</span><span class="tag">Agentic AI</span>
+          <span class="tag">Sentence Transformers</span><span class="tag">Computer Vision</span><span class="tag">GeoAI</span>
+        </div>
+      </div>
+      <div class="stack-card fade-in">
+        <h4>Languages</h4>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span>
+          <span class="tag">Java</span><span class="tag">C++</span><span class="tag">C</span><span class="tag">HTML / CSS</span>
+        </div>
+      </div>
+      <div class="stack-card fade-in">
+        <h4>Full-Stack & APIs</h4>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span>
+          <span class="tag">FastAPI</span><span class="tag">Spring Boot</span><span class="tag">REST APIs</span>
+          <span class="tag">React Query</span><span class="tag">Tailwind CSS</span><span class="tag">Web Audio API</span>
+        </div>
+      </div>
+      <div class="stack-card fade-in">
+        <h4>Databases & Vector Stores</h4>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span>
+          <span class="tag">ChromaDB</span><span class="tag">Pinecone</span><span class="tag">Qdrant</span>
+        </div>
+      </div>
+      <div class="stack-card fade-in">
+        <h4>Cloud, APIs & DevOps</h4>
+        <div class="tags">
+          <span class="tag">AWS</span><span class="tag">AWS S3</span><span class="tag">Docker</span>
+          <span class="tag">Git</span><span class="tag">Vercel</span><span class="tag">Groq API</span>
+          <span class="tag">OpenAI API</span><span class="tag">Whisper API</span>
+          <span class="tag">OpenAI TTS</span><span class="tag">PDFKit</span>
+          <span class="tag">FFmpeg</span><span class="tag">Sharp</span>
+        </div>
+      </div>
+      <div class="stack-card fade-in">
+        <h4>Geospatial</h4>
+        <div class="tags">
+          <span class="tag">rasterio</span><span class="tag">GeoPandas</span><span class="tag">Shapely</span>
+          <span class="tag">Folium</span><span class="tag">OpenCV</span><span class="tag">pyproj</span>
+          <span class="tag">albumentations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="section-label">/experience</div>
+    <h2 class="sec-title">Work History</h2>
+    <p class="sec-sub">Professional experience before graduate school.</p>
+    <div class="exp-card fade-in">
+      <div class="exp-top">
+        <div class="exp-icon"><i class="fas fa-code"></i></div>
+        <div>
+          <div class="exp-role">Full-Stack Developer</div>
+          <div class="exp-company">Front.Space — Urbanite Solutions Private Limited</div>
+          <div class="exp-period">Nov 2022 – Feb 2024 &nbsp;·&nbsp; Bangalore, India</div>
+        </div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Built backend infrastructure for a media transformation platform using Node.js, FFmpeg, and Sharp — improving pipeline efficiency by 40%.</li>
+        <li>Shipped responsive React frontend components integrated with backend APIs, reducing round-trip latency visible to end users.</li>
+        <li>Identified and resolved 25+ documented defects across the codebase, a number of which were blocking deployment.</li>
+        <li>Designed image and video processing pipelines replacing an earlier approach causing frequent server timeouts under load.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-label">/projects</div>
+    <h2 class="sec-title">Things I've Built</h2>
+    <p class="sec-sub">Real-world projects focused on AI systems, machine learning, and scalable engineering.</p>
+    <div class="projects-grid">
+
+      <div class="proj-card featured fade-in">
+        <div class="proj-preview">
+          <img src="med assist.jpg" alt="Med Assist">
+          <div class="proj-preview-overlay">
+            <div class="proj-name">Med Assist</div>
+            <div class="proj-type">Agentic AI Medical Assistant</div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <p class="proj-desc">Agentic AI system that records doctor-patient conversations, transcribes them via Whisper, and converts complex medication lists and discharge instructions into plain-language summaries, patient checklists, and an interactive FAQ. The agent plans and calls tools in sequence — parse, RAG retrieval, simplify, generate checklist — and answers follow-up questions with automatic medical disclaimers. <strong>Full pipeline processes a discharge document end-to-end in under 4 seconds.</strong></p>
+          <ul class="proj-bullets">
+            <li>Agentic tool-calling workflow: parse → RAG retrieval → simplify → checklist</li>
+            <li>Whisper API transcription of doctor-patient audio recordings</li>
+            <li>RAG over curated medical knowledge base with ChromaDB</li>
+            <li>Interactive patient FAQ with medical disclaimers</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">FastAPI</span><span class="proj-tag">Groq API</span>
+            <span class="proj-tag">OpenAI API</span><span class="proj-tag">LangChain</span>
+            <span class="proj-tag">Whisper API</span><span class="proj-tag">OpenAI TTS</span>
+            <span class="proj-tag">ChromaDB</span><span class="proj-tag">RAG</span>
+            <span class="proj-tag">Sentence Transformers</span><span class="proj-tag">PostgreSQL</span>
+            <span class="proj-tag">AWS S3</span><span class="proj-tag">PDFKit</span>
+            <span class="proj-tag">Next.js</span><span class="proj-tag">TypeScript</span>
+            <span class="proj-tag">Tailwind CSS</span><span class="proj-tag">React Query</span>
+            <span class="proj-tag">Web Audio API</span><span class="proj-tag">Vercel</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/ydabhimanyu279" target="_blank" class="proj-link" title="Source Code"><i class="fab fa-github"></i></a>
+            <a href="https://medical-assistant-three.vercel.app/" target="_blank" class="proj-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            <span class="proj-stat-badge">Agentic AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-preview">
+          <img src="credit card.jpg" alt="Credit Card Project">
+          <div class="proj-preview-overlay">
+            <div class="proj-name">Credit Card Acceptance Prediction</div>
+            <div class="proj-type">Machine Learning</div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <p class="proj-desc">ML model predicting whether a customer will accept a credit card offer. Built on the Bank Marketing Dataset (up to 45K records) with feature engineering — savings rate, spending ratio, engagement score. <strong>Final XGBoost model reached 85%+ accuracy with strong precision on the minority class.</strong></p>
+          <ul class="proj-bullets">
+            <li>SMOTE for imbalanced class handling</li>
+            <li>Feature engineering: savings rate, spending ratio, engagement score</li>
+            <li>Streamlit interactive prediction app</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span><span class="proj-tag">XGBoost</span>
+            <span class="proj-tag">Random Forest</span><span class="proj-tag">SMOTE</span>
+            <span class="proj-tag">Scikit-learn</span><span class="proj-tag">Streamlit</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/ydabhimanyu279" target="_blank" class="proj-link" title="Source Code"><i class="fab fa-github"></i></a>
+            <a href="https://credit-card-prediction-model.streamlit.app/" target="_blank" class="proj-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            <span class="proj-stat-badge">85%+ Accuracy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-preview">
+          <img src="geoai.jpg" alt="GeoAI Project">
+          <div class="proj-preview-overlay">
+            <div class="proj-name">GeoAI Ship Detection</div>
+            <div class="proj-type">Computer Vision · Geospatial AI</div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <p class="proj-desc">Deep learning system detecting ships in satellite imagery of SF Bay and LA Harbor. Outputs GPS coordinates, GIS-ready shapefiles, and interactive Folium maps for GIS professionals. <strong>Final model hit 83% detection accuracy on held-out satellite tiles.</strong></p>
+          <ul class="proj-bullets">
+            <li>ResNet50 with Focal Loss for imbalanced satellite patches</li>
+            <li>Outputs real-world GPS coordinates and shapefiles</li>
+            <li>Interactive Folium maps for GIS professionals</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">PyTorch</span><span class="proj-tag">ResNet50</span>
+            <span class="proj-tag">Focal Loss</span><span class="proj-tag">rasterio</span>
+            <span class="proj-tag">GeoPandas</span><span class="proj-tag">Folium</span><span class="proj-tag">OpenCV</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/ydabhimanyu279" target="_blank" class="proj-link" title="Source Code"><i class="fab fa-github"></i></a>
+            <a href="https://ydabhimanyu279.github.io/geoai-ship-detection/" target="_blank" class="proj-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            <span class="proj-stat-badge">83% Accuracy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-preview">
+          <img src="semantic search.jpg" alt="Semantic Search Project">
+          <div class="proj-preview-overlay">
+            <div class="proj-name">Netflix Semantic Search</div>
+            <div class="proj-type">RAG · NLP</div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <p class="proj-desc">RAG-based semantic search over 4,800+ movies using Sentence Transformers and ChromaDB, with Gemini 1.5 Flash generating natural language answers. <strong>Semantic relevance improved 85% over keyword baseline on a sampled query set.</strong></p>
+          <ul class="proj-bullets">
+            <li>Semantic embeddings with all-MiniLM-L6-v2</li>
+            <li>ChromaDB vector store with pre-computed persistence</li>
+            <li>Gemini 1.5 Flash for natural language responses</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span><span class="proj-tag">ChromaDB</span>
+            <span class="proj-tag">Sentence Transformers</span><span class="proj-tag">Gemini API</span>
+            <span class="proj-tag">Streamlit</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/ydabhimanyu279/netflix-semantic-search" target="_blank" class="proj-link" title="Source Code"><i class="fab fa-github"></i></a>
+            <a href="https://semantic-search-ydabhimanyu.streamlit.app/" target="_blank" class="proj-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            <span class="proj-stat-badge">85% Improvement</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-label">/contact</div>
+    <div class="contact-grid">
+      <div class="contact-left fade-in">
+        <h2>Let's work together</h2>
+        <p>Have an opportunity or project in mind? Send a quick message — I usually respond within 24 hours.</p>
+        <div class="social-cards">
+          <a href="https://github.com/ydabhimanyu279" target="_blank" class="social-card">
+            <div class="social-icon gh"><i class="fab fa-github"></i></div>
+            <div><div class="social-label">GitHub</div><div class="social-sub">Explore my projects</div></div>
+            <i class="fas fa-external-link-alt social-arrow"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ydabhimanyu/" target="_blank" class="social-card">
+            <div class="social-icon li"><i class="fab fa-linkedin-in"></i></div>
+            <div><div class="social-label">LinkedIn</div><div class="social-sub">Let's connect</div></div>
+            <i class="fas fa-external-link-alt social-arrow"></i>
+          </a>
+          <a href="mailto:yadav.abhim@northeastern.edu" class="social-card">
+            <div class="social-icon em"><i class="fas fa-envelope"></i></div>
+            <div><div class="social-label">Email</div><div class="social-sub">yadav.abhim@northeastern.edu</div></div>
+            <i class="fas fa-external-link-alt social-arrow"></i>
+          </a>
+          <a href="tel:+19095122607" class="social-card">
+            <div class="social-icon ph"><i class="fas fa-phone-alt"></i></div>
+            <div><div class="social-label">Phone</div><div class="social-sub">(909) 512-2607</div></div>
+            <i class="fas fa-external-link-alt social-arrow"></i>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form fade-in">
+        <h3>Send a Message</h3>
+        <div class="form-group"><input type="text" placeholder="Your Name"/></div>
+        <div class="form-group"><input type="email" placeholder="Email Address"/></div>
+        <div class="form-group"><textarea placeholder="Your Message"></textarea></div>
+        <button class="btn-send" onclick="handleSend()"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>// &copy; 2026 <a href="#">Abhimanyu Yadav</a> &nbsp;·&nbsp; <a href="https://github.com/ydabhimanyu279" target="_blank">github.com/ydabhimanyu279</a></p>
+</footer>
+
+<script>
+// Create AI background nodes and lines
+function createAINetwork() {
+    const container = document.getElementById('hero-bg');
+    if(!container) return;
+    const nodeCount = 15;
+    
+    for (let i = 0; i < nodeCount; i++) {
+        const node = document.createElement('div');
+        node.className = 'ai-node';
+        node.style.top = Math.random() * 100 + '%';
+        node.style.left = Math.random() * 100 + '%';
+        node.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(node);
+        
+        // Create 1-2 lines per node
+        const lineCount = Math.floor(Math.random() * 2) + 1;
+        for (let j = 0; j < lineCount; j++) {
+            const line = document.createElement('div');
+            line.className = 'ai-line';
+            line.style.top = node.style.top;
+            line.style.left = node.style.left;
+            line.style.width = (Math.random() * 200 + 100) + 'px';
+            line.style.transform = `rotate(${Math.random() * 360}deg)`;
+            line.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(line);
+        }
+    }
+}
+window.onload = createAINetwork;
+
+// Nav active highlight
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 100) cur = s.id; });
+  navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+});
+
+// Fade-in
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*70); });
+},{threshold:.08});
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Send message
+function handleSend() {
+  const btn = document.querySelector('.btn-send');
+  btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+  btn.style.background = '#1a7f37';
+  setTimeout(() => { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message'; btn.style.background=''; }, 3000);
+}
+</script>
+</body>
+</html>
